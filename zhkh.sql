@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Хост: 127.0.0.1:3306
--- Время создания: Ноя 19 2025 г., 13:34
--- Версия сервера: 8.0.30
--- Версия PHP: 8.0.22
+-- Host: 127.0.0.1:3306
+-- Generation Time: Nov 19, 2025 at 02:56 PM
+-- Server version: 8.0.30
+-- PHP Version: 8.0.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- База данных: `zhkh`
+-- Database: `zhkh`
 --
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `application`
+-- Table structure for table `application`
 --
 
 CREATE TABLE `application` (
@@ -40,17 +40,16 @@ CREATE TABLE `application` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
--- Дамп данных таблицы `application`
+-- Dumping data for table `application`
 --
 
 INSERT INTO `application` (`id`, `user_id`, `profession_id`, `title`, `description`, `status`, `cancel_reason`, `created_at`, `updated_at`) VALUES
-(1, 2, 1, 'Проблема с краном', 'Сломался', 'Отменена', NULL, '2025-11-19 10:04:00', '2025-11-19 10:05:58'),
-(2, 2, 2, 'Проблема с краном', 'Сломаааался', 'Выполнена', NULL, '2025-11-19 10:20:19', '2025-11-19 10:20:37');
+(3, 4, 1, 'Попить воды', 'Срочно нужно попить всю воду из крана', 'Выполнена', NULL, '2025-11-19 10:50:53', '2025-11-19 11:04:09');
 
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `profession`
+-- Table structure for table `profession`
 --
 
 CREATE TABLE `profession` (
@@ -59,7 +58,7 @@ CREATE TABLE `profession` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
--- Дамп данных таблицы `profession`
+-- Dumping data for table `profession`
 --
 
 INSERT INTO `profession` (`id`, `name`) VALUES
@@ -72,7 +71,7 @@ INSERT INTO `profession` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -88,19 +87,19 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
--- Дамп данных таблицы `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `fio`, `login`, `email`, `phone`, `password`, `address`, `created_at`, `role`) VALUES
-(2, 'Волженин ЕГ', 'ffdd', 'aaa@gmail.com', '+7-(999)-888-77-11', '$2y$13$SUjBoQFTc0wthMViBm0r.OOlGK6awcwWMqS2xL7B8Ikc6PdbijekK', 'asdasdasd', '2025-11-19 09:42:44', 'user'),
-(3, 'Админ', 'admin', 'admin@gmail.com', '+7-(999)-333-44-55', '$2y$13$QP/v5/MEwltCIahVJSwS.ezEtCZrIMiX9rKj8FYw5uFW2AwDRccjy', 'ААа', '2025-11-19 10:15:27', 'admin');
+(3, 'Админ', 'admin', 'admin@gmail.com', '+7-(999)-333-44-55', '$2y$13$QP/v5/MEwltCIahVJSwS.ezEtCZrIMiX9rKj8FYw5uFW2AwDRccjy', 'ААа', '2025-11-19 10:15:27', 'admin'),
+(4, 'Тихомиров ИО', 'privet', 'aaa@gmail.com', '+7-(921)-234-23-42', '$2y$13$U7pBPA.jSUnhYk/YhZ7mJ.GC4f1jRzXNVdcf21P5p4Hk2yc.3cZJS', 'fdgdgdfhdfhdf', '2025-11-19 10:49:53', 'user');
 
 --
--- Индексы сохранённых таблиц
+-- Indexes for dumped tables
 --
 
 --
--- Индексы таблицы `application`
+-- Indexes for table `application`
 --
 ALTER TABLE `application`
   ADD PRIMARY KEY (`id`),
@@ -108,13 +107,13 @@ ALTER TABLE `application`
   ADD KEY `profession_id` (`profession_id`);
 
 --
--- Индексы таблицы `profession`
+-- Indexes for table `profession`
 --
 ALTER TABLE `profession`
   ADD PRIMARY KEY (`id`);
 
 --
--- Индексы таблицы `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
@@ -122,33 +121,33 @@ ALTER TABLE `user`
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT для сохранённых таблиц
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT для таблицы `application`
+-- AUTO_INCREMENT for table `application`
 --
 ALTER TABLE `application`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT для таблицы `profession`
+-- AUTO_INCREMENT for table `profession`
 --
 ALTER TABLE `profession`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT для таблицы `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Ограничения внешнего ключа сохраненных таблиц
+-- Constraints for dumped tables
 --
 
 --
--- Ограничения внешнего ключа таблицы `application`
+-- Constraints for table `application`
 --
 ALTER TABLE `application`
   ADD CONSTRAINT `application_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
